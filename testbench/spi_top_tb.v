@@ -1,6 +1,28 @@
+`timescale 1ns / 1ps
+//////////////////////////////////////////////////////////////////////////////////
+// Company: 
+// Engineer: 
+// 
+// Create Date: 13.09.2025 15:29:22
+// Design Name: 
+// Module Name: spi_top_tb
+// Project Name: 
+// Target Devices: 
+// Tool Versions: 
+// Description: 
+// 
+// Dependencies: 
+// 
+// Revision:
+// Revision 0.01 - File Created
+// Additional Comments:
+// 
+//////////////////////////////////////////////////////////////////////////////////
+
+
 module spi_top_tb();
 
-  reg clk, reset, start;
+  reg clk, reset, start, cs;
   reg [7:0] master_din, slave_din;
   wire [7:0] master_dout, slave_dout;
 
@@ -34,15 +56,16 @@ module spi_top_tb();
     #50 reset = 0;
 
     #100 start = 1;
-    #2000  start = 0;
+    #10  start = 0;
 
-    #2000;
+    @(posedge cs);  // Sync to CS high (end of transfer)
+    #50;
     if (master_dout == slave_din && slave_dout == master_din)
       $display(" SPI Transfer Successful!");
     else
       $display("SPI Transfer Failed!");
 
-   
+   $finish(1000);
   end
 
 endmodule
