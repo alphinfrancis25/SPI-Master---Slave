@@ -1,3 +1,25 @@
+`timescale 1ns / 1ps
+//////////////////////////////////////////////////////////////////////////////////
+// Company: 
+// Engineer: 
+// 
+// Create Date: 13.09.2025 15:28:20
+// Design Name: 
+// Module Name: spi_top
+// Project Name: 
+// Target Devices: 
+// Tool Versions: 
+// Description: 
+// 
+// Dependencies: 
+// 
+// Revision:
+// Revision 0.01 - File Created
+// Additional Comments:
+// 
+//////////////////////////////////////////////////////////////////////////////////
+
+
 module spi_top(
   input clk,
   input start,
@@ -14,12 +36,12 @@ module spi_top(
     .clk(clk),
     .reset(reset),
     .sclk(sclk),
-    .din(master_din),
-    .miso(miso),
-    .mosi(mosi),
+    .DIN(master_din),
+    .MISO(miso),
+    .MOSI(mosi),
     .cs(cs),
     .start(start),
-    .dout(master_dout)
+    .DOUT(master_dout)
   );
   
   
